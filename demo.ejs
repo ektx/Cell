@@ -1,30 +1,53 @@
-<%- include('lib/os/parts/head', {
+<%- include('lib/parts/head', {
 title: '首页',
 links: [
-    'lib/os/css/demo.min.css'
+    'lib/css/demo.min.css'
 ]} ) %>
 
 <body>
 	
 	<header>
-		<img src="lib/os/img/logo.png" alt="logo">
-		<form class="header-search" action="">
-			<input type="text">
-			<input type="reset">
-			<button type="submit">
-				<svg viewBox="0 0 34 34" fill="#f90" stroke="currentColor">
-					<ellipse stroke-width="3" cx="16" cy="15" rx="12" ry="12"></ellipse>
-					<path d="M26 26 l 8 8" stroke-width="3" stroke-linecap="square"></path>
-				</svg>
-			</button>
+		<img src="lib/img/logo.png" alt="logo">
 
-		</form>
+		<ul class="hd-nav">
+			<li class="current">
+				<a href="">All</a>
+			</li>
+			<li >
+				<a href="">Js</a>
+			</li>
+			<li>
+				<a href="">Mods</a>
+			</li>
+			<li>
+				<a href="">Cells</a>
+			</li>
+		</ul>
 	</header>
 
-	<%- include('lib/os/parts/scripts.ejs') %>
+	<section class="cell-body">
+		<ul class="cell-pack-content">
+		<% for (var i = 0; i < 15; i++){ %>
+			<li>
+				<a class="cell-pack-ico" href="#">
+					<img src="cellMod/img/pack.svg" alt="">
+				</a>
+				<div class="pack-info-box">
+					<a class="pack-name" href="">jQuery</a>
+					<p class="pack-author">更新<time>2016.7.25</time> By <span>UED</span></p>
+					<p class="pack-introduction">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</p>
+				</div>
+
+			</li>
+		<% } %>
+		</ul>
+	</section>
+
+	<footer class="web-footer">
+		<p>Powered by <a href="#">iServer</a> Copyright UED</p>
+	</footer>
+
+	<%- include('lib/parts/scripts.ejs') %>
 	
-	<script>
-		$('body').append(marked('# hell world'))
-	</script>
 </body>
 </html>

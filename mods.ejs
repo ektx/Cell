@@ -1,0 +1,53 @@
+<%- include('lib/parts/head', {
+title: '首页',
+links: [
+    'lib/css/demo.min.css',
+    'lib/css/github.min.css'
+]} ) %>
+
+<body>
+	
+	<header>
+		<img src="lib/img/logo.png" alt="logo">
+
+		<ul class="hd-nav">
+			<li class="current">
+				<a href="">All</a>
+			</li>
+			<li >
+				<a href="">Js</a>
+			</li>
+			<li>
+				<a href="">Mods</a>
+			</li>
+			<li>
+				<a href="">Cells</a>
+			</li>
+		</ul>
+	</header>
+
+	<section class="cell-body markdown-body">
+		
+	</section>
+
+	<footer class="web-footer">
+		<p>Powered by <a href="#">iServer</a> Copyright UED</p>
+	</footer>
+
+	<%- include('lib/parts/scripts.ejs') %>
+
+	<script>
+		$.ajax({
+			url: 'cellMod/js/jQuery/readme.md',
+			type: 'get'
+		})
+		.done(function(data) {
+			$('.cell-body').html(marked (data) )
+		})
+		.fail(function(err) {
+			console.log(err)
+		})
+	</script>
+	
+</body>
+</html>
