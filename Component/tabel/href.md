@@ -6,24 +6,25 @@
 ```html
 <!-- vue.js template -->
 <script type="text/x-template" id="v-table-tem">
-<div>
     <article>
         <table class="excel-table">
             <thead>
             <tr>
-                <th v-for="th in datas.title">
+                <th v-for="th in datas.header">
                     {{th}}
                 </th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(trData, index) in datas.data" :href="trData.href">
+            <tr v-for="(trData, index) in datas.data">
                 <template v-for="(val, key, i) in trData">
-                    <template v-if="key !== 'href'">
+                    <template v-if="key !== 'orgId'">
                         <td>
+                            <a :href="trData.orgId">
                             <template v-if="i === 0">{{index+1}}.</template>
                             {{val}}
-                            <template v-if="i === Object.keys(trData).length -2 && ('href' in trData)"><i>></i></template>
+                            <template v-if="i === Object.keys(trData).length -2 && ('orgId' in trData)"><i>></i></template>
+                            </a> 
                         </td>
                     </template>
                 </template>
@@ -31,8 +32,8 @@
             </tbody>
         </table>
     </article>
-</div>
 </script>
+
 
 <!-- 2.引用模板 -->
 <script>
